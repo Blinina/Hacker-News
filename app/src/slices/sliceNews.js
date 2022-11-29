@@ -3,8 +3,8 @@ import axios from 'axios'
 
 const url = "https://hacker-news.firebaseio.com/v0/";
 export const getData = createAsyncThunk('news/getNews', async () => {
-  const res = await axios.get('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty');
-  const hundredNews = res.data.slice(0, 10);
+  const res = await axios.get(`${url}/newstories.json?print=pretty`);
+  const hundredNews = res.data.slice(20, 35);
   let newArr = [];
   for (const storyId of hundredNews) {
     const oneNew = await axios.get(`${url}/item/${storyId}.json?print=pretty`);
@@ -13,8 +13,8 @@ export const getData = createAsyncThunk('news/getNews', async () => {
   return newArr;
 });
 
-
 const newsAdapter = createEntityAdapter();
+
 const initialState = {
   ...newsAdapter.getInitialState(),
 };
@@ -47,3 +47,15 @@ export const getNews = (state) => selectors.selectAll(state);
 
 
 export default sliceNews.reducer;
+
+
+// let newArr2 = [];
+//   for (let i =0; i<hundredNews/2; i+=1) {
+//     const oneNew = await axios.get(`${url}/item/${hundredNews[i]}.json?print=pretty`);
+//     newArr.push(oneNew.data);
+//   }
+//   for (let i =hundredNews/2; i<hundredNews; i+=1) {
+//     const oneNew = await axios.get(`${url}/item/${hundredNews[i]}.json?print=pretty`);
+//     newArr2.push(oneNew.data);
+//   }
+//   return newArr;s

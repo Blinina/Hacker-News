@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+p{
+  margin: 0.1rem;
+}
+.ant-list-item{
+  padding: 5px;
+  width: 60%;
+}
+.ant-menu-overflow {
+  display: flex;
+  justify-content: flex-end;
+  text-transform: uppercase;
+  margin-right: 10%;
+}
+.ant-list-items, .ant-card{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link {
+  cursor: pointer;
+}
+.link:hover {
+  color:rgb(74, 2, 129);
+}
