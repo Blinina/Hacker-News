@@ -3,7 +3,6 @@ import {
   BrowserRouter,
   Route,
   Routes,
-  Link,
 } from "react-router-dom";
 import Main from "./components/Main";
 import New from "./components/New";
@@ -17,7 +16,10 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/new" element={<New />} />
+            <Route path="/news" element={<New/>}>
+                    {/* <Route index element={<Main />} /> */}
+                    <Route path=":id" element={<New  />} />
+                </Route>
           </Routes>
         </main>
       </BrowserRouter>

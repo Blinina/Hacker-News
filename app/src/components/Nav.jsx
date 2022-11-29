@@ -1,6 +1,6 @@
 export default function Nav() {
     return (
-     <p>rer</p>
+     <p>навигация</p>
     );
   }
   
