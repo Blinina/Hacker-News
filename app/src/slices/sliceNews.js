@@ -4,7 +4,7 @@ import axios from 'axios'
 const url = "https://hacker-news.firebaseio.com/v0/";
 export const getData = createAsyncThunk('news/getNews', async () => {
   const res = await axios.get(`${url}/newstories.json?print=pretty`);
-  const hundredNews = res.data.slice(20, 35);
+  const hundredNews = res.data.slice(0, 100);
   let newArr = [];
   for (const storyId of hundredNews) {
     const oneNew = await axios.get(`${url}/item/${storyId}.json?print=pretty`);
@@ -44,6 +44,7 @@ const sliceNews = createSlice({
 
 export const selectors = newsAdapter.getSelectors((state) => state.news);
 export const getNews = (state) => selectors.selectAll(state);
+export const getLoading = ((state) => state.news.isLoading);
 
 
 export default sliceNews.reducer;

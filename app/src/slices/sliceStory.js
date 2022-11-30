@@ -1,46 +1,49 @@
-import { createSlice, createEntityAdapter, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
 
 const url = "https://hacker-news.firebaseio.com/v0/";
-export const getDataStory = createAsyncThunk('story/getDataStory', async (payload) => {
+export const getDataStory = createAsyncThunk('stories/getDataStory', async (payload, { dispatch})=> {
     const res = await axios.get(`${url}/item/${payload}.json?print=pretty`);
-    return res.data
+    console.log(res.data)
+    dispatch(setCurrentNews(res.data))
+
 });
 
 
-const storyAdapter = createEntityAdapter();
-
 const initialState = {
-    ...storyAdapter.getInitialState(),
+    story: [],
 };
 
 
 const sliceStory = createSlice({
     name: "story",
     initialState,
+    reducers: {
+        setCurrentNews:(state, action)=>{
+          state.story=action.payload
+        },
+    },
     extraReducers: (builder) => {
         builder
-            .addCase(getDataStory.fulfilled, (state, action) => {
-                const { payload } = action;
-                storyAdapter.setOne(state, payload);
-                state.isLoading = false;
-                state.loadingError = null;
-            })
-            .addCase(getDataStory.pending, (state) => {
-                state.isLoading = true;
-                state.loadingError = null;
-            })
-            .addCase(getDataStory.rejected, (state, action) => {
-                console.log('rejected');
-                state.isLoading = false;
-                state.loadingError = action.error;
-            });
-    },
+        .addCase(getDataStory.fulfilled, (state) => {
+          state.isLoading = false;
+          state.loadingError = null;
+        })
+        .addCase(getDataStory.pending, (state) => {
+          state.isLoading = true;
+          state.loadingError = null;
+        })
+        .addCase(getDataStory.rejected, (state, action) => {
+          console.log('rejected');
+          state.isLoading = false;
+          state.loadingError = action.error;
+        });
+    }
+    
 });
 
-export const selectorsStory = storyAdapter.getSelectors((state) => state.story);
-export const getStory = (state) => selectorsStory.selectAll(state);
 
-
+export const {setCurrentNews} = sliceStory.actions
+export const getLoading = ((state) => state.story.isLoading);
 
 export default sliceStory.reducer;

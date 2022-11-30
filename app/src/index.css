@@ -30,10 +30,33 @@ p{
   flex-direction: column;
   align-items: center;
 }
+.ant-card{
+  width: 70%!important;
+  margin: 0!important;
+}
+.spin-loading{
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-card-body{
+  width: 60%;
+}
 
 .link {
   cursor: pointer;
+  color: rgb(53, 123, 235);
 }
 .link:hover {
   color:rgb(74, 2, 129);
+}
+.btn{
+  margin-left: 10px;
+}
+.warning{
+  color: rgb(201, 41, 41);
+}
+.ant-spin-text{
+  margin-left: 7px;
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const url = "https://hacker-news.firebaseio.com/v0/";
 
-export const getDataComments = createAsyncThunk('story/getDataComments', async (payload) => {
+export const getDataComments = createAsyncThunk('comments/getDataComments', async (payload) => {
     const res = await axios.get(`${url}/item/${payload}.json?print=pretty`);
     const arrCom = [];
     if (res.data.kids) {
