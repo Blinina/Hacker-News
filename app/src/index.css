@@ -23,6 +23,7 @@ p{
   justify-content: flex-end;
   text-transform: uppercase;
   margin-right: 10%;
+  margin-left: 10%;
 }
 .ant-list-items, .ant-card{
   display: flex;
@@ -59,4 +60,12 @@ p{
 }
 .ant-spin-text{
   margin-left: 7px;
+}
+.date{
+  font-size: 10px;
+  color: rgb(130, 130, 130);
+}
+.child-com{
+  margin-left: 15px;
+  background-color: blueviolet;
 }

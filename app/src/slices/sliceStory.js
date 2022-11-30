@@ -4,7 +4,6 @@ import axios from 'axios'
 const url = "https://hacker-news.firebaseio.com/v0/";
 export const getDataStory = createAsyncThunk('stories/getDataStory', async (payload, { dispatch})=> {
     const res = await axios.get(`${url}/item/${payload}.json?print=pretty`);
-    console.log(res.data)
     dispatch(setCurrentNews(res.data))
 
 });
