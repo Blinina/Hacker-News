@@ -25,9 +25,9 @@ const sliceComments = createSlice({
     name: "comments",
     initialState,
     reducers: {
-        setChildren: (state, action)=>{
+        setChildren: (state, action) => {
             state.children = [...action.payload]
-          },
+        },
     },
     extraReducers: (builder) => {
         builder

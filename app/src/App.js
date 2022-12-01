@@ -7,6 +7,7 @@ import {
 import Main from "./components/Main";
 import New from "./components/New";
 import Nav from "./components/Nav";
+import { Footer } from "antd/es/layout/layout";
 
 function App() {
   return (

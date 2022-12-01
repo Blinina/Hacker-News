@@ -32,8 +32,7 @@ const sliceStory = createSlice({
           state.isLoading = false;
           state.loadingError = action.error;
         });
-    }
-    
+    }   
 });
 
 export const {setCurrentNews} = sliceStory.actions

@@ -7,13 +7,12 @@ export default function Comments({ elem }) {
   const [show, setShow] = useState(false);
   const [childrenComments, setchildrenComments] = useState([]);
 
-  function NormalText() { return <div dangerouslySetInnerHTML={{ __html: text }} /> }
-
+  function NormalText() { return <div dangerouslySetInnerHTML={{ __html: text }}/>}
 
   useEffect(() => {
     getChild();
   }, []);
-
+  
   const getChild = async () => {
     let arrChildComments = [];
     if (!kids) return;
@@ -28,7 +27,7 @@ export default function Comments({ elem }) {
   const showSubComments = () => {
     setShow(!show)
   };
- 
+
   return (<>
     <li>
       <div><b>{by ? by : 'гость'}</b><b>{':'}</b></div>
@@ -36,11 +35,11 @@ export default function Comments({ elem }) {
       <div>{text ? <NormalText /> : <p className="warning">Не удалось найти комментарий</p>}</div>
       {kids && <p onClick={showSubComments} className='link'>{show ? 'Скрыть комментарии' : 'Показать комментарии'}</p>}
       {show && <div className="child-com">{childrenComments.map((kid) => (
-      <Comments
-        key={kid}
-        elem={kid}
-      />
-    ))}</div>}
+        <Comments
+          key={kid}
+          elem={kid}
+        />
+      ))}</div>}
     </li>
   </>
   )

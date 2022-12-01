@@ -14,7 +14,6 @@ export const getData = createAsyncThunk('news/getNews', async () => {
 });
 
 const newsAdapter = createEntityAdapter();
-
 const initialState = {
   ...newsAdapter.getInitialState(),
 };
