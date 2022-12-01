@@ -15,7 +15,7 @@ export default function Nav() {
   ];
   <Menu items={menuItems} />
   return (<>
-    <div class="header">
+    <div className="header">
       <div><p>Hacker News</p></div>
       <Menu mode="horizontal" items={menuItems} />
     </div>

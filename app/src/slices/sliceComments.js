@@ -6,7 +6,7 @@ export const getDataComments = createAsyncThunk('comments/getDataComments', asyn
     const res = await axios.get(`${url}/item/${payload}.json?print=pretty`);
     const arrCom = [];
     if (!res.data.kids) return;
-    if (res.data.kids) {
+    if (res.data.kids !== null) {
         const { kids } = res.data;
         for (const kid of kids) {
             const resCom = await axios.get(`${url}/item/${kid}.json?print=pretty`);

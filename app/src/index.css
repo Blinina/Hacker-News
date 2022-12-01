@@ -144,3 +144,20 @@ ul{
    }
 
 }
+.ml-10{
+  margin-left: 1.5%;
+}
+.not-found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  img{
+    width: 80%;
+  }
+}

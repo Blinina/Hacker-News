@@ -5,10 +5,9 @@ import {
   Routes,
 } from "react-router-dom";
 import Main from "./components/Main";
-import New from "./components/New";
+import Story from "./components/Story";
 import Nav from "./components/Nav";
-import { Footer } from "antd/es/layout/layout";
-
+import NotFound from "./components/NotFound";
 function App() {
   return (
     <>
@@ -17,10 +16,10 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/news" element={<New/>}>
-                    {/* <Route index element={<Main />} /> */}
-                    <Route path=":id" element={<New  />} />
-                </Route>
+            <Route path="/story" element={<Story />}>
+              <Route path=":id" element={<Story />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </BrowserRouter>

@@ -7,12 +7,14 @@ export default function Comments({ elem }) {
   const [show, setShow] = useState(false);
   const [childrenComments, setchildrenComments] = useState([]);
 
-  function NormalText() { return <div dangerouslySetInnerHTML={{ __html: text }}/>}
+  function NormalText() {
+    return <div className="ml-10" dangerouslySetInnerHTML={{ __html: text }} />
+  }
 
   useEffect(() => {
     getChild();
   }, []);
-  
+
   const getChild = async () => {
     let arrChildComments = [];
     if (!kids) return;

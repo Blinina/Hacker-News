@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDataStory, getLoading } from '../slices/sliceStory';
 import { getComments, getDataComments, getLoadingComments } from "../slices/sliceComments";
 import { Button, Card, Spin } from 'antd';
-import Comments from "./comments";
+import Comments from "./Comments";
 
 export default function New() {
   const useParamsId = useParams();

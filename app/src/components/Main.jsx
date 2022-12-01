@@ -35,7 +35,7 @@ export default function Main() {
           renderItem={(item) => (
             <List.Item>
               <List.Item.Meta
-                title={<Link to={`news/${item.id}`}>{item.title}</Link>}
+                title={<Link to={`story/${item.id}`}>{item.title}</Link>}
                 description={<div><p>Автор: {item.by}</p><p>Время публикации: {new Date(item.time * 1000).toLocaleString()}</p>
                   <p>Рейтинг: {item.score}</p>
                 </div>}
