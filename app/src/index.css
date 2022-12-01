@@ -12,18 +12,18 @@ code {
     monospace;
 }
 p{
-  margin: 0.1rem;
+  margin: 0;
+  padding: 0;
 }
 .ant-list-item{
-  padding: 5px;
+  padding: 2px;
   width: 60%;
 }
 .ant-menu-overflow {
   display: flex;
   justify-content: flex-end;
   text-transform: uppercase;
-  margin-right: 10%;
-  margin-left: 10%;
+  width: 80%;
 }
 .ant-list-items, .ant-card{
   display: flex;
@@ -32,7 +32,7 @@ p{
   align-items: center;
 }
 .ant-card{
-  width: 70%!important;
+  width: 80%!important;
   margin: 0!important;
 }
 .spin-loading{
@@ -65,7 +65,25 @@ p{
   font-size: 10px;
   color: rgb(130, 130, 130);
 }
+li{
+  list-style-type: none;
+}
 .child-com{
   margin-left: 15px;
-  background-color: blueviolet;
+  background-color: rgb(241, 244, 248);
+}
+.child-com > li{
+  list-style-type: none;
+  margin-left: 10px;
+}
+.btn-update {
+ margin-top: 15px;
+
+}
+.btn-contain{
+  display: flex;
+  justify-content: flex-end;
+}
+.main{
+  width: 80%;
 }

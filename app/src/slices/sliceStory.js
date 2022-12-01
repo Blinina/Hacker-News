@@ -1,22 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
+import { url } from '../helps';
 
-const url = "https://hacker-news.firebaseio.com/v0/";
 export const getDataStory = createAsyncThunk('stories/getDataStory', async (payload, { dispatch})=> {
     const res = await axios.get(`${url}/item/${payload}.json?print=pretty`);
     dispatch(setCurrentNews(res.data))
-
 });
-
-
-const initialState = {
-    story: [],
-};
-
 
 const sliceStory = createSlice({
     name: "story",
-    initialState,
+    initialState: {
+      story: [],
+  },
     reducers: {
         setCurrentNews:(state, action)=>{
           state.story=action.payload
@@ -40,7 +35,6 @@ const sliceStory = createSlice({
     }
     
 });
-
 
 export const {setCurrentNews} = sliceStory.actions
 export const getLoading = ((state) => state.story.isLoading);

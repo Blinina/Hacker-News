@@ -15,11 +15,6 @@ export default function Nav() {
             ),
             
         },
-        {
-          key: 'button',
-          icon:  <Button>ОБНОВИТЬ</Button>,
-          label: '',
-      },
       
     ];
      <Menu items={menuItems} />

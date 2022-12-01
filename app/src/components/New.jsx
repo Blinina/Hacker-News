@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDataStory, getLoading } from '../slices/sliceStory';
 import { getComments, getDataComments, getLoadingComments } from "../slices/sliceComments";
 import { Card, Spin } from 'antd';
-import timeToUTC from '../fn';
 import Comments from "./comments";
 
 export default function New() {
@@ -23,14 +22,13 @@ export default function New() {
 
   return (<>{isLoading ? (
     <Spin className="spin-loading" tip="Подождите, идет загрузка новости..." />
-
   ) : <Card title={data.title} extra={<a className="btn" href={data.url} target="_blunk"><b>ЧИТАТЬ</b></a>
   } style={{ width: 300 }}>
     <div>
       <div>
         <span>
           <b>{'Дата создания: '}</b>
-          {timeToUTC(data.time)}
+          {new Date(data.time * 1000).toLocaleString()}
         </span>
       </div>
       <div>
@@ -45,7 +43,7 @@ export default function New() {
       <div>
         {data.kids && (<><p><b>Комментарии:</b></p>
           {commentsIsLoading ? (<Spin className="spin-loading" tip="Комментарии загружаютcя..." />) : (<ul>
-            {comments.map((el) => <Comments elem={el} />)}
+            {comments.map((el) => <Comments elem={el} key={el.id} />)}
           </ul>)}
         </>)}
       </div>
