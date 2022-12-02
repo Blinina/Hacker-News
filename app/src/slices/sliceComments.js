@@ -4,16 +4,16 @@ import { url } from '../helps';
 
 export const getDataComments = createAsyncThunk('comments/getDataComments', async (payload) => {
     const res = await axios.get(`${url}/item/${payload}.json?print=pretty`);
-    const arrCom = [];
+    let newPromiseArr = []
     if (!res.data.kids) return;
     if (res.data.kids !== null) {
         const { kids } = res.data;
         for (const kid of kids) {
-            const resCom = await axios.get(`${url}/item/${kid}.json?print=pretty`);
-            arrCom.push(resCom.data)
+            newPromiseArr.push(axios.get(`${url}/item/${kid}.json?print=pretty`))
         }
     }
-    return arrCom;
+    const arrCom = await Promise.all(newPromiseArr);
+    return arrCom.map(d => d.data);
 });
 
 const commentsAdapter = createEntityAdapter();

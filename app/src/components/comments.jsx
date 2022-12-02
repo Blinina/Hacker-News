@@ -19,12 +19,10 @@ export default function Comments({ elem }) {
     let arrChildComments = [];
     if (!kids) return;
     for (let kidId of kids) {
-      const res = await axios.get(`${url}/item/${kidId}.json?print=pretty`);
-      if (res.data !== null) {
-        arrChildComments = [...arrChildComments, res.data];
-      }
+      arrChildComments.push(axios.get(`${url}/item/${kidId}.json?print=pretty`));
     }
-    setchildrenComments(arrChildComments);
+    const allData = await Promise.all(arrChildComments);
+    setchildrenComments(allData.map(d => d.data));
   }
   const showSubComments = () => {
     setShow(!show)

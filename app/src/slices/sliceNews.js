@@ -4,13 +4,13 @@ import { url } from '../helps';
 
 export const getData = createAsyncThunk('news/getNews', async () => {
   const res = await axios.get(`${url}/newstories.json?print=pretty`);
-  const hundredNews = res.data.slice(170, 220);
-  let newArr = [];
+  const hundredNews = res.data.slice(0, 99);
+  let newPromiseArr = [];
   for (const storyId of hundredNews) {
-    const oneNew = await axios.get(`${url}/item/${storyId}.json?print=pretty`);
-    newArr.push(oneNew.data);
+    newPromiseArr.push(axios.get(`${url}/item/${storyId}.json?print=pretty`));
   }
-  return newArr;
+  const allData = await Promise.all(newPromiseArr);
+  return allData.map(d => d.data);
 });
 
 const newsAdapter = createEntityAdapter();
